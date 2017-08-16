@@ -10,9 +10,17 @@ function testSimpleFunction()
 
 end
 
-function testNativeObject(object)
+function testNativeObject(house)
 
-    local size = object:getSize()
-    print('data retrieved from c++ object: house size w = ' .. tostring(size.w) .. ', h = ' .. tostring(size.h))
+    local size = house:getSize()
+    print('data retrieved from c++ house:')
+    print('size w = ' .. tostring(size.w) .. ', h = ' .. tostring(size.h))
+
+    local roomersCount = house:getRoomersCount()
+    print('roomers count = ' .. tostring(roomersCount))
+    for i = 0, roomersCount - 1, 1 do
+        local roomer = house:getRoomer(i)
+        print('roomer ' .. tostring(i) .. ' name: ' .. roomer:getName())
+    end
 
 end
