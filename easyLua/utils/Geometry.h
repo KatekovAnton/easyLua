@@ -89,6 +89,12 @@ struct __GSize2D {
     
     __GSize2D() :width(0), height(0) {}
     __GSize2D(float _w, float _h) :width(_w), height(_h) {}
+    
+    float getW() const {return width;}
+    float getH() const {return height;}
+    
+    void setW(float value) {width = value;}
+    void setH(float value) {height = value;}
 };
 
 typedef struct __GSize2D GSize2D;

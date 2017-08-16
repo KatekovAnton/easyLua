@@ -100,6 +100,16 @@
 		6C112AC41F437EC30094948D /* UsageSample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6C112AC11F437EC30094948D /* UsageSample.cpp */; };
 		6CA2D2B71F44C98600471456 /* LUAScriptDataSource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA2D2B51F44C98600471456 /* LUAScriptDataSource.cpp */; };
 		6CA2D2B81F44C98600471456 /* LUAScriptDataSource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA2D2B51F44C98600471456 /* LUAScriptDataSource.cpp */; };
+		6CA2D2BB1F44CC4600471456 /* Scripts in Resources */ = {isa = PBXBuildFile; fileRef = 6CA2D2BA1F44CC4600471456 /* Scripts */; };
+		6CA2D2BC1F44CC4600471456 /* Scripts in Resources */ = {isa = PBXBuildFile; fileRef = 6CA2D2BA1F44CC4600471456 /* Scripts */; };
+		6CA2D2C71F44D06900471456 /* House.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA2D2C51F44D06900471456 /* House.cpp */; };
+		6CA2D2C81F44D06900471456 /* House.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA2D2C51F44D06900471456 /* House.cpp */; };
+		6CA2D2CB1F44D07500471456 /* Person.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA2D2C91F44D07500471456 /* Person.cpp */; };
+		6CA2D2CC1F44D07500471456 /* Person.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA2D2C91F44D07500471456 /* Person.cpp */; };
+		6CA2D2CF1F44D09300471456 /* ScriptProxy_House.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA2D2CD1F44D09300471456 /* ScriptProxy_House.cpp */; };
+		6CA2D2D01F44D09300471456 /* ScriptProxy_House.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA2D2CD1F44D09300471456 /* ScriptProxy_House.cpp */; };
+		6CA2D2D31F44D0A000471456 /* ScriptProxy_Person.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA2D2D11F44D0A000471456 /* ScriptProxy_Person.cpp */; };
+		6CA2D2D41F44D0A000471456 /* ScriptProxy_Person.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA2D2D11F44D0A000471456 /* ScriptProxy_Person.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -218,6 +228,15 @@
 		6C112AC21F437EC30094948D /* UsageSample.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UsageSample.hpp; sourceTree = "<group>"; };
 		6CA2D2B51F44C98600471456 /* LUAScriptDataSource.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LUAScriptDataSource.cpp; sourceTree = "<group>"; };
 		6CA2D2B61F44C98600471456 /* LUAScriptDataSource.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LUAScriptDataSource.hpp; sourceTree = "<group>"; };
+		6CA2D2BA1F44CC4600471456 /* Scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Scripts; sourceTree = "<group>"; };
+		6CA2D2C51F44D06900471456 /* House.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = House.cpp; sourceTree = "<group>"; };
+		6CA2D2C61F44D06900471456 /* House.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = House.hpp; sourceTree = "<group>"; };
+		6CA2D2C91F44D07500471456 /* Person.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Person.cpp; sourceTree = "<group>"; };
+		6CA2D2CA1F44D07500471456 /* Person.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Person.hpp; sourceTree = "<group>"; };
+		6CA2D2CD1F44D09300471456 /* ScriptProxy_House.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScriptProxy_House.cpp; sourceTree = "<group>"; };
+		6CA2D2CE1F44D09300471456 /* ScriptProxy_House.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ScriptProxy_House.hpp; sourceTree = "<group>"; };
+		6CA2D2D11F44D0A000471456 /* ScriptProxy_Person.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScriptProxy_Person.cpp; sourceTree = "<group>"; };
+		6CA2D2D21F44D0A000471456 /* ScriptProxy_Person.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ScriptProxy_Person.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -457,10 +476,35 @@
 		6C112AC01F437E9C0094948D /* usageSample */ = {
 			isa = PBXGroup;
 			children = (
+				6CA2D2BA1F44CC4600471456 /* Scripts */,
+				6CA2D2C31F44D01F00471456 /* SampleObjects */,
+				6CA2D2C41F44D02800471456 /* ScriptProxies */,
 				6C112AC11F437EC30094948D /* UsageSample.cpp */,
 				6C112AC21F437EC30094948D /* UsageSample.hpp */,
 			);
 			path = usageSample;
+			sourceTree = "<group>";
+		};
+		6CA2D2C31F44D01F00471456 /* SampleObjects */ = {
+			isa = PBXGroup;
+			children = (
+				6CA2D2C51F44D06900471456 /* House.cpp */,
+				6CA2D2C61F44D06900471456 /* House.hpp */,
+				6CA2D2C91F44D07500471456 /* Person.cpp */,
+				6CA2D2CA1F44D07500471456 /* Person.hpp */,
+			);
+			path = SampleObjects;
+			sourceTree = "<group>";
+		};
+		6CA2D2C41F44D02800471456 /* ScriptProxies */ = {
+			isa = PBXGroup;
+			children = (
+				6CA2D2CD1F44D09300471456 /* ScriptProxy_House.cpp */,
+				6CA2D2CE1F44D09300471456 /* ScriptProxy_House.hpp */,
+				6CA2D2D11F44D0A000471456 /* ScriptProxy_Person.cpp */,
+				6CA2D2D21F44D0A000471456 /* ScriptProxy_Person.hpp */,
+			);
+			path = ScriptProxies;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -548,6 +592,7 @@
 				6C1129E21F4375140094948D /* LaunchScreen.storyboard in Resources */,
 				6C1129E01F4375140094948D /* Assets.xcassets in Resources */,
 				6C1129E41F4375140094948D /* Main.storyboard in Resources */,
+				6CA2D2BB1F44CC4600471456 /* Scripts in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,6 +600,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CA2D2BC1F44CC4600471456 /* Scripts in Resources */,
 				6C112A0B1F43761F0094948D /* Main.storyboard in Resources */,
 				6C112A081F43761F0094948D /* Assets.xcassets in Resources */,
 			);
@@ -567,6 +613,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CA2D2C71F44D06900471456 /* House.cpp in Sources */,
 				6C112A6D1F4377260094948D /* ltm.c in Sources */,
 				6C112A601F4377260094948D /* llex.c in Sources */,
 				6C112A5E1F4377260094948D /* linit.c in Sources */,
@@ -579,6 +626,7 @@
 				6C112A611F4377260094948D /* lmathlib.c in Sources */,
 				6C112A511F4377260094948D /* lapi.c in Sources */,
 				6C112A691F4377260094948D /* lstring.c in Sources */,
+				6CA2D2CB1F44D07500471456 /* Person.cpp in Sources */,
 				6C112A651F4377260094948D /* lopcodes.c in Sources */,
 				6C1129E51F4375140094948D /* ViewController.mm in Sources */,
 				6C112A561F4377260094948D /* lcorolib.c in Sources */,
@@ -597,11 +645,13 @@
 				6C112A631F4377260094948D /* loadlib.c in Sources */,
 				6C112A641F4377260094948D /* lobject.c in Sources */,
 				6C112A6C1F4377260094948D /* ltablib.c in Sources */,
+				6CA2D2CF1F44D09300471456 /* ScriptProxy_House.cpp in Sources */,
 				6C112A581F4377260094948D /* ldblib.c in Sources */,
 				6C112A5D1F4377260094948D /* lgc.c in Sources */,
 				6C112A621F4377260094948D /* lmem.c in Sources */,
 				6C112A6A1F4377260094948D /* lstrlib.c in Sources */,
 				6C112A541F4377260094948D /* lbitlib.c in Sources */,
+				6CA2D2D31F44D0A000471456 /* ScriptProxy_Person.cpp in Sources */,
 				6C112AC31F437EC30094948D /* UsageSample.cpp in Sources */,
 				6C112A531F4377260094948D /* lbaselib.c in Sources */,
 				6C112A5A1F4377260094948D /* ldo.c in Sources */,
@@ -618,6 +668,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CA2D2C81F44D06900471456 /* House.cpp in Sources */,
 				6C112A8F1F43774F0094948D /* ltm.c in Sources */,
 				6C112A821F43774F0094948D /* llex.c in Sources */,
 				6C112A801F43774F0094948D /* linit.c in Sources */,
@@ -630,6 +681,7 @@
 				6C112A831F43774F0094948D /* lmathlib.c in Sources */,
 				6C112A731F43774F0094948D /* lapi.c in Sources */,
 				6C112A8B1F43774F0094948D /* lstring.c in Sources */,
+				6CA2D2CC1F44D07500471456 /* Person.cpp in Sources */,
 				6C112A871F43774F0094948D /* lopcodes.c in Sources */,
 				6C112AB51F4378E20094948D /* mac_fileManager.mm in Sources */,
 				6C112A0C1F43761F0094948D /* ViewController.mm in Sources */,
@@ -648,11 +700,13 @@
 				6C112A851F43774F0094948D /* loadlib.c in Sources */,
 				6C112A861F43774F0094948D /* lobject.c in Sources */,
 				6C112A8E1F43774F0094948D /* ltablib.c in Sources */,
+				6CA2D2D01F44D09300471456 /* ScriptProxy_House.cpp in Sources */,
 				6C112A7A1F43774F0094948D /* ldblib.c in Sources */,
 				6C112A7F1F43774F0094948D /* lgc.c in Sources */,
 				6C112A841F43774F0094948D /* lmem.c in Sources */,
 				6C112A8C1F43774F0094948D /* lstrlib.c in Sources */,
 				6C112A761F43774F0094948D /* lbitlib.c in Sources */,
+				6CA2D2D41F44D0A000471456 /* ScriptProxy_Person.cpp in Sources */,
 				6C112AC41F437EC30094948D /* UsageSample.cpp in Sources */,
 				6C112A751F43774F0094948D /* lbaselib.c in Sources */,
 				6C112A7C1F43774F0094948D /* ldo.c in Sources */,

@@ -10,10 +10,17 @@
 #define UsageSample_hpp
 
 #include <stdio.h>
+#include "LUAScriptDataSource.hpp"
 
 
 
-class UsageSample {
+class House;
+
+
+
+class UsageSample : public LUAScriptDataSource {
+    
+    House *_house;
     
 public:
     

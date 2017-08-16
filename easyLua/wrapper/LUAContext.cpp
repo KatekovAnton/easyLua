@@ -16,7 +16,7 @@ using namespace std;
 using namespace luabridge;
 
 
-static std::vector<LUAContext*> allContexts(10);
+static std::vector<LUAContext*> allContexts;
 
 /*
  Well, that was pretty rough but I figured it out finally. Turns out that when you call "require" LUA accesses the global "package.loaders" table, which contains a list of functions which searches for and loads your particular lua file.
@@ -127,14 +127,12 @@ void LUAHull::RetrieveError()
 
 void LUAHull::LogText(const string &text, const string &context)
 {
-//    if (context.length() > 0)
-//        ULog("lua: %s: %s", context.c_str(), lua_tostring(_l, -1));
-//    else
-//        ULog("lua: %s", lua_tostring(_l, -1));
-    if (context.length() > 0)
+    if (context.length() > 0) {
         ULog("lua: %s: %s", context.c_str(), text.c_str());
-    else
+    }
+    else {
         ULog("lua: %s", text.c_str());
+    }
 }
 
 void LUAHull::EnableCustomLoader()
@@ -240,6 +238,14 @@ void LUAContext::BindStructures()
         .addConstructor<void(*) (float, float)>()
         .addProperty("x", &GPoint2D::getX, &GPoint2D::setX)
         .addProperty("y", &GPoint2D::getY, &GPoint2D::setY)
+    .endClass();
+    
+    getGlobalNamespace(LUA)
+    .beginClass<GSize2D>("Size")
+    .addConstructor<void(*) ()>()
+    .addConstructor<void(*) (float, float)>()
+    .addProperty("w", &GSize2D::getW, &GSize2D::setW)
+    .addProperty("h", &GSize2D::getH, &GSize2D::setH)
     .endClass();
     
     getGlobalNamespace(LUA)

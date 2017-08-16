@@ -1,9 +1,9 @@
 //
 //  Log.cpp
-//  easyLua
+//  MAX
 //
-//  Created by Katekov Anton on 8/15/17.
-//  Copyright © 2017 katekovanton. All rights reserved.
+//  Created by Katekov Anton on 11/15/12.
+//  Copyright © 2012 katekovanton. All rights reserved.
 //
 
 #include "Log.hpp"
