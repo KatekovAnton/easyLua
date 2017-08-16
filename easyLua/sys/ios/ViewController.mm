@@ -30,6 +30,9 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
+    UsageSample sample;
+    sample.Test();
 }
 
 
