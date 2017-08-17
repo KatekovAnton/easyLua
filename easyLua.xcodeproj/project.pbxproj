@@ -823,6 +823,7 @@
 					TARGET_OS_IPHONE,
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/easyLua/sys/ios/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.katekovanton.easyLua;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -836,6 +837,7 @@
 				DEVELOPMENT_TEAM = Y9B8ZLHEX6;
 				GCC_PREPROCESSOR_DEFINITIONS = TARGET_OS_IPHONE;
 				INFOPLIST_FILE = "$(SRCROOT)/easyLua/sys/ios/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.katekovanton.easyLua;
 				PRODUCT_NAME = "$(TARGET_NAME)";
