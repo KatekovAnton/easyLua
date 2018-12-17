@@ -3,6 +3,8 @@
 ## Overview
 This is a short example of how you can integrate lua interpreter into your c++ project and use it as embedded scripting language.
 
+Platforms: iOS, MacOS
+
 ## Architecture
 Hosting c++ application is a master, it is providing sandbox for embedded scripting, embedded scripting language works inside of sandbox, scripts can interact with hosting app through API.
 
