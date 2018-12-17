@@ -111,7 +111,11 @@
 
 static int os_execute (lua_State *L) {
   const char *cmd = luaL_optstring(L, 1, NULL);
+#if defined TARGET_OS_IPHONE
+    int stat = 0;
+#else
   int stat = system(cmd);
+#endif
   if (cmd != NULL)
     return luaL_execresult(L, stat);
   else {

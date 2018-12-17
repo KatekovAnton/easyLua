@@ -115,7 +115,6 @@ void BinaryReader::SetPosition(long position)
     {
         _currentBuffer = _internalBuffer;
         _currentBuffer += _position;
-     //   _currentBuffer = *&_internalBuffer + _position; //reinterpret_cast<char *>(_internalBuffer)> + _position;
     }
 }
 
@@ -287,6 +286,5 @@ std::string BinaryReader::ReadFullAsString()
     data[length+1] = '\0';
     std::string result = string(data);
     free(data);
-	//removeBadCharacters(result);
     return result;
 }
