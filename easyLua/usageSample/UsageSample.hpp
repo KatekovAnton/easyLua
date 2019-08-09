@@ -15,6 +15,7 @@
 
 
 class House;
+class ByteBuffer;
 
 
 
@@ -24,10 +25,11 @@ class UsageSample : public LUAScriptDataSource {
     
 public:
     
-    UsageSample();
+    UsageSample(bool empty);
     ~UsageSample();
     
-    void Test();
+    void Test(ByteBuffer *destination);
+    void TestSaved(ByteBuffer *source);
     
 };
 

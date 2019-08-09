@@ -23,15 +23,16 @@ using namespace luabridge;
 
 
 
-UsageSample::UsageSample()
+UsageSample::UsageSample(bool empty)
 {
     _rootFolder = "Scripts/";
     
-    vector<shared_ptr<Person>> persons;
-    persons.push_back(shared_ptr<Person>(new Person("Fredd", GPoint2D(0.3, 0.7))));
-    persons.push_back(shared_ptr<Person>(new Person("Sarah", GPoint2D(0.9, 1.5))));
-    _house = new House(persons, GSize2D(2.0, 2.0));
-    
+    if (!empty) {
+        vector<shared_ptr<Person>> persons;
+        persons.push_back(shared_ptr<Person>(new Person("Fredd", GPoint2D(0.3, 0.7))));
+        persons.push_back(shared_ptr<Person>(new Person("Sarah", GPoint2D(0.9, 1.5))));
+        _house = new House(persons, GSize2D(2.0, 2.0));
+    }
 }
 
 UsageSample::~UsageSample()
@@ -39,7 +40,7 @@ UsageSample::~UsageSample()
     delete _house;
 }
 
-void UsageSample::Test()
+void UsageSample::Test(ByteBuffer *destination)
 {
     // create context
     LUAContext context;
@@ -90,4 +91,23 @@ void UsageSample::Test()
     {
         ULog("Error in testNativeObject: %s", e.what());
     }
+    
+    // Does not work
+//    context.Save(destination);
+}
+
+void UsageSample::TestSaved(ByteBuffer *source)
+{
+    // create context
+    LUAContext context;
+    // data source for loading external modules
+    context._dataSource = this;
+    // binding common structures
+    context.BindStructures();
+    // binding classes
+    ScriptProxy_House::BindToContext(&context);
+    ScriptProxy_Person::BindToContext(&context);
+    
+    context.Load(source);
+    
 }

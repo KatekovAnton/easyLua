@@ -10,10 +10,51 @@
 #include "FileManger.h"
 #include "Log.hpp"
 #include <vector>
+#if !defined (WIN32)
+extern "C" {
+#endif
+#include "eris.h"
+#if !defined (WIN32)
+}
+#endif
+#include "ByteBuffer.h"
+
 
 
 using namespace std;
 using namespace luabridge;
+
+
+class LUAPersister {
+public:
+    
+    size_t _position;
+    
+    LUAContext *_context;
+    ByteBuffer *_data;
+    
+    LUAPersister(LUAContext *context,
+              ByteBuffer *data)
+    :_context(context)
+    ,_data(data)
+    ,_position(0)
+    {}
+};
+
+
+const char * lua_Reader_impl(lua_State *L, void *ud, size_t *sz) {
+    LUAPersister *persister = (LUAPersister *)ud;
+    const char *result = reinterpret_cast<const char *>(persister->_data->getPointer());
+    *sz = persister->_data->getDataSize();
+    return result;
+}
+
+int lua_Writer_impl(lua_State *L, const void *p, size_t sz, void *ud) {
+    LUAPersister *persister = (LUAPersister *)ud;
+    persister->_data->appendData(reinterpret_cast<const unsigned char *>(p), sz, 1);
+    return 0;
+}
+
 
 
 static std::vector<LUAContext*> allContexts;
@@ -226,6 +267,18 @@ void LUAContext::LoadText(const std::string& text)
 void LUAContext::LogText(const std::string& text)
 {
     _luaHull->LogText(text, "");
+}
+
+void LUAContext::Save(ByteBuffer *buffer)
+{
+    LUAPersister p(this, buffer);
+    eris_dump(LUA, &lua_Writer_impl, &p);
+}
+
+void LUAContext::Load(ByteBuffer *buffer)
+{
+    LUAPersister p(this, buffer);
+    eris_undump(LUA, &lua_Reader_impl, &p);
 }
 
 #pragma mark - Object bindings

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B1602AA22FD9F6E0079CAB8 /* ByteBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B1602A922FD9F6E0079CAB8 /* ByteBuffer.cpp */; };
+		6B1602AB22FD9F6E0079CAB8 /* ByteBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B1602A922FD9F6E0079CAB8 /* ByteBuffer.cpp */; };
 		6C1129DF1F4375140094948D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C1129D71F4375140094948D /* AppDelegate.m */; };
 		6C1129E01F4375140094948D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C1129D81F4375140094948D /* Assets.xcassets */; };
 		6C1129E21F4375140094948D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C1129DA1F4375140094948D /* LaunchScreen.storyboard */; };
@@ -113,6 +115,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6B1602A822FD9F6E0079CAB8 /* ByteBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ByteBuffer.h; sourceTree = "<group>"; };
+		6B1602A922FD9F6E0079CAB8 /* ByteBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ByteBuffer.cpp; sourceTree = "<group>"; };
 		6C1129BA1F43747A0094948D /* easyLua.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = easyLua.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C1129D61F4375140094948D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6C1129D71F4375140094948D /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -466,6 +470,8 @@
 			children = (
 				6C112ABC1F437BFF0094948D /* BinaryReader.cpp */,
 				6C112ABD1F437BFF0094948D /* BinaryReader.h */,
+				6B1602A922FD9F6E0079CAB8 /* ByteBuffer.cpp */,
+				6B1602A822FD9F6E0079CAB8 /* ByteBuffer.h */,
 				6C112AB71F4379280094948D /* Geometry.h */,
 				6C112AB81F437A840094948D /* Log.cpp */,
 				6C112AB91F437A840094948D /* Log.hpp */,
@@ -570,6 +576,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -630,6 +637,7 @@
 				6C112A651F4377260094948D /* lopcodes.c in Sources */,
 				6C1129E51F4375140094948D /* ViewController.mm in Sources */,
 				6C112A561F4377260094948D /* lcorolib.c in Sources */,
+				6B1602AA22FD9F6E0079CAB8 /* ByteBuffer.cpp in Sources */,
 				6C112ABA1F437A840094948D /* Log.cpp in Sources */,
 				6C112AB21F4378CF0094948D /* ios_fileManager.mm in Sources */,
 				6C1129E31F4375140094948D /* main.m in Sources */,
@@ -685,6 +693,7 @@
 				6C112A871F43774F0094948D /* lopcodes.c in Sources */,
 				6C112AB51F4378E20094948D /* mac_fileManager.mm in Sources */,
 				6C112A0C1F43761F0094948D /* ViewController.mm in Sources */,
+				6B1602AB22FD9F6E0079CAB8 /* ByteBuffer.cpp in Sources */,
 				6C112ABB1F437A840094948D /* Log.cpp in Sources */,
 				6C112A781F43774F0094948D /* lcorolib.c in Sources */,
 				6C112A0A1F43761F0094948D /* main.m in Sources */,

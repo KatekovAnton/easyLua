@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #include "UsageSample.hpp"
-
+#include "ByteBuffer.h"
 
 
 @implementation ViewController
@@ -28,8 +28,9 @@
 {
     [super viewDidAppear];
     
-    UsageSample sample;
-    sample.Test();
+    ByteBuffer b;
+    UsageSample sample1(false);
+    sample1.Test(&b);
 }
 
 

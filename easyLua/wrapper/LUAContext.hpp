@@ -26,6 +26,7 @@
 
 
 class LUAHull;
+class ByteBuffer;
 
 
 
@@ -46,6 +47,9 @@ public:
     
     void LoadText(const std::string& text);
     void LogText(const std::string& text);
+    
+    void Save(ByteBuffer *buffer);
+    void Load(ByteBuffer *buffer);
     
 #pragma mark - Object bindings
     
