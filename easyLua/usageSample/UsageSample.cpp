@@ -42,6 +42,8 @@ UsageSample::~UsageSample()
 
 void UsageSample::Test(ByteBuffer *destination)
 {
+    ULog("Usage sample: Test() begin ------");
+    
     // create context
     LUAContext context;
     // data source for loading external modules
@@ -92,12 +94,31 @@ void UsageSample::Test(ByteBuffer *destination)
         ULog("Error in testNativeObject: %s", e.what());
     }
     
-    // Does not work
-//    context.Save(destination);
+    // saving data to table
+    try
+    {
+        LuaRef saveGlobalData = getGlobal(context.LuaState(), "saveGlobalData");
+        if (saveGlobalData.isFunction()) {
+            saveGlobalData();
+        }
+    }
+    catch (LuaException const& e)
+    {
+        ULog("Error in saveGlobalData: %s", e.what());
+    }
+    
+    lua_getglobal(context.LuaState(), "perms");
+    lua_getglobal(context.LuaState(), "globalData");
+    
+    context.Save(destination);
+    
+    ULog("Usage sample: Test() done ------");
 }
 
 void UsageSample::TestSaved(ByteBuffer *source)
 {
+    ULog("Usage sample: TestSaved() begin ------");
+    
     // create context
     LUAContext context;
     // data source for loading external modules
@@ -108,6 +129,23 @@ void UsageSample::TestSaved(ByteBuffer *source)
     ScriptProxy_House::BindToContext(&context);
     ScriptProxy_Person::BindToContext(&context);
     
-    context.Load(source);
+    // load script text
+    {
+        string scriptText = "";
+        shared_ptr<IFile> file = FileManager::SharedManager()->LoadFile("Scripts/testScript.lua");
+        scriptText = file->GetContentAsString();
+        
+        context.LoadText(scriptText);
+    }
     
+    
+    lua_getglobal(context.LuaState(), "perms");
+    context.Load(source);
+//    lua_getfield(context.LuaState(), -1, "loadGlobalData");
+//    if (lua_pcall(context.LuaState(), 1, 0, 0) != 0) {
+//        ULog("loadGlobalData error");
+//        ULog("error: %s", lua_tostring(context.LuaState(), -1));
+//    }
+    
+    ULog("Usage sample: TestSaved() done ------");
 }

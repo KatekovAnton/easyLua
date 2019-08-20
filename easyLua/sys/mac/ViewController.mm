@@ -31,6 +31,7 @@
     ByteBuffer b;
     UsageSample sample1(false);
     sample1.Test(&b);
+    sample1.TestSaved(&b);
 }
 
 

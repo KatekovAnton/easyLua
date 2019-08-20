@@ -2,6 +2,48 @@
 require('Utils/base')
 require('Utils/class')
 
+function dump(o)
+if type(o) == 'table' then
+local s = '{ '
+for k,v in pairs(o) do
+if type(k) ~= 'number' then k = '"'..k..'"' end
+s = s .. '['..k..'] = ' .. dump(v) .. ','
+end
+return s .. '} '
+else
+return tostring(o)
+end
+end
+
+perms =
+{
+
+}
+
+globalData =
+{
+
+}
+
+function saveGlobalData()
+
+    globalData['value1'] = 'text1'
+    globalData['value2'] = 'text2'
+    globalData['value3'] = 'text3'
+    print("globalData:", dump(globalData))
+
+end
+
+function loadGlobalData()
+
+    print("perms:", dump(perms))
+    table.insert(globalData, perms['value1'])
+    table.insert(globalData, perms['value2'])
+    table.insert(globalData, perms['value3'])
+    print("globalData:", dump(globalData))
+
+end
+
 
 
 function testSimpleFunction()
@@ -23,4 +65,8 @@ function testNativeObject(house)
         print('roomer ' .. tostring(i) .. ' name: ' .. roomer:getName())
     end
 
+end
+
+function showData()
+    print("data:", dump(data))
 end
