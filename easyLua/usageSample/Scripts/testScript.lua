@@ -29,7 +29,7 @@ function saveGlobalData()
 
     globalData['value1'] = 'text1'
     globalData['value2'] = 'text2'
-    globalData['value3'] = 'text3'
+    globalData['value3'] = 'Well, that was pretty rough but I figured it out finally. Turns out that when you call "require" LUA accesses the global "package.loaders" table, which contains a list of functions which searches for and loads your particular lua file.'
     print("globalData:", dump(globalData))
 
 end
