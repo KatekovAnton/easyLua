@@ -30,6 +30,7 @@ public:
     House(const std::vector<std::shared_ptr<Person>> &roomers, const GSize2D &size);
     ~House();
     
+    void AddRoomer(std::shared_ptr<Person> roomer);
     // any other methods of House class
     // ...
     

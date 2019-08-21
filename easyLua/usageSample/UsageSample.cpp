@@ -94,6 +94,73 @@ void UsageSample::Test(ByteBuffer *destination)
         ULog("Error in testNativeObject: %s", e.what());
     }
     
+    // run quest
+    try
+    {
+        LuaRef initialiseQuest = getGlobal(context.LuaState(), "initialiseQuest");
+        if (initialiseQuest.isFunction())
+        {
+            ScriptProxy_House *house = reinterpret_cast<ScriptProxy_House *>(_house);
+            initialiseQuest(house);
+        }
+    }
+    catch (LuaException const& e)
+    {
+        ULog("Error in initialiseQuest: %s", e.what());
+    }
+    
+    ULog("Usage sample: running even without changes");
+    // run check if roomer is there
+    try
+    {
+        LuaRef onEvent = getGlobal(context.LuaState(), "onEvent");
+        if (onEvent.isFunction())
+        {
+            ScriptProxy_House *house = reinterpret_cast<ScriptProxy_House *>(_house);
+            onEvent(house);
+        }
+    }
+    catch (LuaException const& e)
+    {
+        ULog("Error in onEvent: %s", e.what());
+    }
+    
+    ULog("Usage sample: adding 3rd user and running event");
+    _house->AddRoomer(shared_ptr<Person>(new Person("Anton", GPoint2D(0.6, 1.0))));
+    
+    // again run check if roomer is there
+    try
+    {
+        LuaRef onEvent = getGlobal(context.LuaState(), "onEvent");
+        if (onEvent.isFunction())
+        {
+            ScriptProxy_House *house = reinterpret_cast<ScriptProxy_House *>(_house);
+            onEvent(house);
+        }
+    }
+    catch (LuaException const& e)
+    {
+        ULog("Error in onEvent: %s", e.what());
+    }
+    
+    ULog("Usage sample: adding 4th user and running event");
+    _house->AddRoomer(shared_ptr<Person>(new Person("Mike", GPoint2D(0.1, 0.1))));
+    
+    // again run check if roomer is there
+    try
+    {
+        LuaRef onEvent = getGlobal(context.LuaState(), "onEvent");
+        if (onEvent.isFunction())
+        {
+            ScriptProxy_House *house = reinterpret_cast<ScriptProxy_House *>(_house);
+            onEvent(house);
+        }
+    }
+    catch (LuaException const& e)
+    {
+        ULog("Error in onEvent: %s", e.what());
+    }
+    
     // saving data to table
     try
     {
@@ -114,7 +181,7 @@ void UsageSample::Test(ByteBuffer *destination)
     
     context.Save(destination);
     
-    ULog("Usage sample: Test() done ------");
+    ULog("Usage sample: Test() done ------\n");
 }
 
 void UsageSample::TestSaved(ByteBuffer *source)

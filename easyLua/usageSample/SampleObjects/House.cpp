@@ -21,6 +21,11 @@ House::~House()
     
 }
 
+void House::AddRoomer(std::shared_ptr<Person> roomer)
+{
+    _roomers.push_back(roomer);
+}
+
 #pragma mark - ScriptProxy_House
 
 GSize2D House::ScriptProxy_GetSize()
