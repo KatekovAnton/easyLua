@@ -35,10 +35,9 @@ function saveGlobalData()
 end
 
 function loadGlobalData(perms)
-
-    table.insert(globalData, perms['value1'])
-    table.insert(globalData, perms['value2'])
-    table.insert(globalData, perms['value3'])
+    globalData['value1'] = perms['value1']
+    globalData['value2'] = perms['value2']
+    globalData['value3'] = perms['value3']
     print("globalData:", dump(globalData))
 
 end
