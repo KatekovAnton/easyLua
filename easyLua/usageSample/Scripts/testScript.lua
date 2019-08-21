@@ -34,9 +34,8 @@ function saveGlobalData()
 
 end
 
-function loadGlobalData()
+function loadGlobalData(perms)
 
-    print("perms:", dump(perms))
     table.insert(globalData, perms['value1'])
     table.insert(globalData, perms['value2'])
     table.insert(globalData, perms['value3'])

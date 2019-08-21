@@ -144,15 +144,14 @@ void UsageSample::TestSaved(ByteBuffer *source)
     lua_getglobal(context.LuaState(), "perms");
     context.Load(source);
     LuaRef persRef = luabridge::LuaRef::fromStack(context.LuaState(), -1);
-    if (persRef.isTable()) {
-        LuaRef v3 = persRef["value3"];
-        
-        if (v3.isString()) {
-            std::string s = v3.cast<std::string>();
-            ULog("%s", s.c_str());
-        }
-        
-    }
+//    if (persRef.isTable()) {
+//        LuaRef v3 = persRef["value3"];
+//
+//        if (v3.isString()) {
+//            std::string s = v3.cast<std::string>();
+//            ULog("%s", s.c_str());
+//        }
+//    }
     LuaRef loadGlobalData = getGlobal(context.LuaState(), "loadGlobalData");
     loadGlobalData(persRef);
     ULog("Usage sample: TestSaved() done ------");
