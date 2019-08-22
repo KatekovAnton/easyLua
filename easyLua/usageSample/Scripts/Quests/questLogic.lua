@@ -19,10 +19,9 @@ QUEST_STATE_FAILED    = 3
 
 
 
-Quest = Class('Quest', EventListener)
+Quest = Class()
 function Quest:init(body)
     local o = {}
-    o.tasks = {}
     o.condition = nil
     o.body = body
     o.state = QUEST_STATE_AWAIT
@@ -32,15 +31,15 @@ end
 
 
 
-function Quest:addTask(task)
-    self.tasks[task] = true
+function Quest:run(questManager)
+    self.state = QUEST_STATE_CURRENT
+    coroutine.resume(self.co, self, questManager)
 end
 
 
 
-function Quest:run(house)
-    self.state = QUEST_STATE_CURRENT
-    coroutine.resume(self.co, self, house)
+function Quest:continue(questManager, interruptionResult)
+    coroutine.resume(self.co, self, questManager, interruptionResult)
 end
 
 
@@ -57,11 +56,17 @@ end
 
 
 
--- condition should be a function that 
+function Quest:onEvent(house)
+    return self.condition(house)
+end
+
+
+
+-- condition should be a function that
 -- returns nil if condition failed and quest state does't change
 -- returns not nil if quest agenda has been done
 -- this object will be passed back to quest function
-function Quest:interrupt(condition, house)
+function Quest:interrupt(condition)
     local currentConditionResult = condition(house)
     if currentConditionResult ~= nil then
         return currentConditionResult
@@ -74,28 +79,13 @@ end
 
 
 
-function Quest:onEvent(house)
-    conditionResult = self.condition(house)
-    return conditionResult
-end
-
-
-
-function Quest:onAfterEvent(conditionResult)
-    if conditionResult ~= nil then 
-         coroutine.resume(self.co, conditionResult)
-    end
-end
-
-
-
 -------------------------------------------------------------------------------------------------
 -- Quest manager
 -------------------------------------------------------------------------------------------------
 
-QuestManager = Class()
+QuestManager = Class('QuestManager', EventListener)
 function QuestManager:init()
-    local o = {}
+    local o = self.Super()
     o.runningQuests = {}
     o.finishedQuests = {}
     return self.Inst(o)
@@ -128,15 +118,40 @@ end
 
 
 
+function QuestManager:onEvent(house)
+    local runningQuestsNew = {}
+    local runningQuestsNewToCall = {}
+
+    -- iterate through listerens
+    for quest, _ in pairs(self.runningQuests) do
+        local conditionResult = quest:onEvent(house)
+        if conditionResult == nil then
+            runningQuestsNew[listener] = true
+        else
+            runningQuestsNewToCall[listener] = conditionResult
+        end
+    end
+    self.runningQuests = runningQuestsNew
+
+    -- why we should iterate through another array?
+    -- because recursion will cause re-fill of self.listeners
+    for quest, conditionResult in pairs(runningQuestsNewToCall) do
+        quest:continue(self, conditionResult)
+    end
+end
+
+
+
+function QuestManager:saveQuests(perms)
+    perms['runningQuests'] = self.runningQuests
+    perms['finishedQuests'] = self.finishedQuests
+end
+
+function QuestManager:loadQuests(perms)
+
+end
+
+
+
 gloabalQuestManager = QuestManager()
-
-
-
-function saveQuests(perms)
-    perms['runningQuests'] = gloabalQuestManager.runningQuests
-    perms['finishedQuests'] = gloabalQuestManager.finishedQuests
-end
-
-function restoreQuests(perms)
-
-end
+gloabalDispatcher:addListener(gloabalQuestManager)

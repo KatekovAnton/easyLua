@@ -23,7 +23,7 @@ function saveGlobalData()
     globalData['value1'] = 'text1'
     globalData['value2'] = 'text2'
     globalData['value3'] = 'Well, lets test saving a string variable.'
-    saveQuests(globalData)
+    gloabalQuestManager:saveQuests(globalData)
 
     print("saved data:", dump(globalData))
 end
@@ -65,27 +65,15 @@ function initialiseQuest(house)
     print('Initialization started!')
 
     -- Quest1 body
-    function quest1Body(quest, house)
+    function quest1Body(quest, questManager)
         print('Fredd and Sarah are waiting for 3rd roomer!')
-        quest:waitForThirdRoomer(house)
+        local quest, questManager, result = quest:waitForThirdRoomer()
         print('Ok third person is here! lets party!')
     end
 
     -- Quest1 dispatching
     local quest1 = Quest(quest1Body)
     quest1:run(house)
-
-
-    -- Quest2 body
-    function quest2Body(quest, house)
-        print('Fredd and Sarah are waiting for 4rd roomer for larger party!')
-        quest:waitForFourthRoomer(house)
-        print('Ok he is here! party is huge now!')
-    end
-
-    -- Quest2 dispatching
-    local quest2 = Quest(quest2Body)
-    quest2:run(house)
 
     print('Initialization done')
 end
