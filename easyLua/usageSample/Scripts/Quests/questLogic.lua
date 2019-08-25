@@ -23,9 +23,8 @@ Quest = Class()
 function Quest:init(body)
     local o = {}
     o.condition = nil
-    o.body = body
     o.state = QUEST_STATE_AWAIT
-    o.co = coroutine.create(o.body)
+    o.co = coroutine.create(body)
     return self.Inst(o)
 end
 
@@ -38,26 +37,23 @@ end
 
 
 
-function Quest:continue(questManager, interruptionResult)
-    coroutine.resume(self.co, self, questManager, interruptionResult)
+function Quest:continue(interruptionResult)
+    coroutine.resume(self.co, interruptionResult)
 end
 
 
 
-function Quest:finish()
-    self.state = QUEST_STATE_SUCCESS
+function Quest:finish(state)
+    print('Quest:finish')
+    self.state = state
+    -- o.co = nil
+    -- o.condition = nil
 end
 
 
 
-function Quest:fail()
-    self.state = QUEST_STATE_FAILED
-end
-
-
-
-function Quest:onEvent(house)
-    return self.condition(house)
+function Quest:onEvent(questManager)
+    return self.condition(questManager)
 end
 
 
@@ -66,14 +62,14 @@ end
 -- returns nil if condition failed and quest state does't change
 -- returns not nil if quest agenda has been done
 -- this object will be passed back to quest function
-function Quest:interrupt(condition)
-    local currentConditionResult = condition(house)
+function Quest:interrupt(condition, questManager)
+    local currentConditionResult = condition(questManager)
     if currentConditionResult ~= nil then
         return currentConditionResult
     end
     self.condition = condition
-    gloabalDispatcher:addListener(self)
     local conditionResult = coroutine.yield()
+    self.condition = nil
     return conditionResult
 end
 
@@ -99,6 +95,12 @@ end
 
 
 
+function QuestManager:setHouse(house)
+    self.house = house
+end
+
+
+
 function QuestManager:getFinishedQuestsCount()
     table.getn(self.finishedQuests)
 end
@@ -107,37 +109,34 @@ end
 
 function QuestManager:addQuest(quest)
     self.runningQuests[quest] = true
-end
-
-
-
-function QuestManager:finishQuest(quest)
-    self.runningQuests[quest] = nil
-    self.finishedQuests[quest] = true
+    quest:run(self)
 end
 
 
 
 function QuestManager:onEvent(house)
-    local runningQuestsNew = {}
+
     local runningQuestsNewToCall = {}
 
-    -- iterate through listerens
+    -- iterate through quests
     for quest, _ in pairs(self.runningQuests) do
-        local conditionResult = quest:onEvent(house)
-        if conditionResult == nil then
-            runningQuestsNew[listener] = true
-        else
-            runningQuestsNewToCall[listener] = conditionResult
+        local conditionResult = quest:onEvent(self)
+        if conditionResult ~= nil then
+            runningQuestsNewToCall[quest] = conditionResult
         end
     end
-    self.runningQuests = runningQuestsNew
 
     -- why we should iterate through another array?
     -- because recursion will cause re-fill of self.listeners
     for quest, conditionResult in pairs(runningQuestsNewToCall) do
         quest:continue(self, conditionResult)
+        if quest.state ~= QUEST_STATE_CURRENT then
+            print('QuestManager: found finished quest = ' .. tostring(quest))
+            self.runningQuests[quest] = nil
+            self.finishedQuests[quest] = true
+        end
     end
+    print('QuestManager: count of quests running ' .. tostring(tableLength(self.runningQuests)) .. '; finished ' .. tostring(tableLength(self.finishedQuests)))
 end
 
 

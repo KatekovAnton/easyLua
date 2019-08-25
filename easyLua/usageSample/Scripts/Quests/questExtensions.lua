@@ -8,25 +8,25 @@ require('Quests/questLogic')
 
 
 
-function Quest:waitForThirdRoomer(house)
-    return self:interrupt(function (house)
+function Quest:waitForThirdRoomer(questManager)
+    return self:interrupt(function (questManager)
+        local house = questManager.house
         local roomersCount = house:getRoomersCount()
-        print('Quest:waitForThirdRoomer Current roomers count ' .. tostring(roomersCount))
         if roomersCount < 3 then
             return nil
         end
         return 'ok'
-    end, house)
+    end, questManager)
 end
 
 
-function Quest:waitForFourthRoomer(house)
-    return self:interrupt(function (house)
+function Quest:waitForFourthRoomer(questManager)
+    return self:interrupt(function (questManager)
+        local house = questManager.house
         local roomersCount = house:getRoomersCount()
-        print('Quest:waitForFourthRoomer Current roomers count ' .. tostring(roomersCount))
         if roomersCount < 4 then
             return nil
         end
         return 'ok'
-    end, house)
+    end, questManager)
 end

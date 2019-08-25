@@ -8,7 +8,7 @@
 
 #include "ScriptProxy_House.hpp"
 #include "LUAContext.hpp"
-
+#include "Log.hpp"
 
 
 using namespace luabridge;
@@ -27,6 +27,9 @@ void ScriptProxy_House::BindToContext(LUAContext *context)
     .addFunction("getRoomer", &ScriptProxy_House::ScriptProxy_GetRoomer)
     
     .endClass();
+    
+    
+    
 }
 
 int ScriptProxy_House::ToString(lua_State* L)

@@ -63,17 +63,24 @@ end
 
 function initialiseQuest(house)
     print('Initialization started!')
+    gloabalQuestManager:setHouse(house)
 
     -- Quest1 body
     function quest1Body(quest, questManager)
+        -- Check house
+        -- local house = questManager.house
+        -- local roomersCount = house:getRoomersCount()
+        -- print('AAAAAA = ' .. tostring(roomersCount))
+
         print('Fredd and Sarah are waiting for 3rd roomer!')
-        local quest, questManager, result = quest:waitForThirdRoomer()
+        local result = quest:waitForThirdRoomer(questManager)
         print('Ok third person is here! lets party!')
+        quest:finish(QUEST_STATE_SUCCESS)
     end
 
     -- Quest1 dispatching
     local quest1 = Quest(quest1Body)
-    quest1:run(house)
+    gloabalQuestManager:addQuest(quest1)
 
     print('Initialization done')
 end
