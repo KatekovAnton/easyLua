@@ -11,10 +11,12 @@ perms = {}
 globalData = {}
 
 function prepareSaveGlobalData()
-    perms['_ENV'] = '_ENV'
+    print('prepareSaveGlobalData')
+    perms[_ENV] = '_ENV'
 end
 
 function prepareLoadGlobalData()
+    print('prepareLoadGlobalData')
     perms['_ENV'] = _ENV
 end
 

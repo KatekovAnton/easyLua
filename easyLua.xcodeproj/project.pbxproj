@@ -20,7 +20,6 @@
 		6C112A0A1F43761F0094948D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C112A031F43761F0094948D /* main.m */; };
 		6C112A0B1F43761F0094948D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C112A041F43761F0094948D /* Main.storyboard */; };
 		6C112A0C1F43761F0094948D /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6C112A061F43761F0094948D /* ViewController.mm */; };
-		6C112A151F43770C0094948D /* eris.c in Sources */ = {isa = PBXBuildFile; fileRef = 6C112A131F43770C0094948D /* eris.c */; };
 		6C112A511F4377260094948D /* lapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 6C112A161F4377260094948D /* lapi.c */; };
 		6C112A521F4377260094948D /* lauxlib.c in Sources */ = {isa = PBXBuildFile; fileRef = 6C112A181F4377260094948D /* lauxlib.c */; };
 		6C112A531F4377260094948D /* lbaselib.c in Sources */ = {isa = PBXBuildFile; fileRef = 6C112A1A1F4377260094948D /* lbaselib.c */; };
@@ -54,7 +53,6 @@
 		6C112A6F1F4377260094948D /* lutf8lib.c in Sources */ = {isa = PBXBuildFile; fileRef = 6C112A4C1F4377260094948D /* lutf8lib.c */; };
 		6C112A701F4377260094948D /* lvm.c in Sources */ = {isa = PBXBuildFile; fileRef = 6C112A4D1F4377260094948D /* lvm.c */; };
 		6C112A711F4377260094948D /* lzio.c in Sources */ = {isa = PBXBuildFile; fileRef = 6C112A4F1F4377260094948D /* lzio.c */; };
-		6C112A721F4377320094948D /* eris.c in Sources */ = {isa = PBXBuildFile; fileRef = 6C112A131F43770C0094948D /* eris.c */; };
 		6C112A731F43774F0094948D /* lapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 6C112A161F4377260094948D /* lapi.c */; };
 		6C112A741F43774F0094948D /* lauxlib.c in Sources */ = {isa = PBXBuildFile; fileRef = 6C112A181F4377260094948D /* lauxlib.c */; };
 		6C112A751F43774F0094948D /* lbaselib.c in Sources */ = {isa = PBXBuildFile; fileRef = 6C112A1A1F4377260094948D /* lbaselib.c */; };
@@ -112,6 +110,8 @@
 		6CA2D2D01F44D09300471456 /* ScriptProxy_House.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA2D2CD1F44D09300471456 /* ScriptProxy_House.cpp */; };
 		6CA2D2D31F44D0A000471456 /* ScriptProxy_Person.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA2D2D11F44D0A000471456 /* ScriptProxy_Person.cpp */; };
 		6CA2D2D41F44D0A000471456 /* ScriptProxy_Person.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CA2D2D11F44D0A000471456 /* ScriptProxy_Person.cpp */; };
+		6CBA042D23197A1D0077627E /* eris.c in Sources */ = {isa = PBXBuildFile; fileRef = 6CBA042C23197A1C0077627E /* eris.c */; };
+		6CBA042E23197C1B0077627E /* eris.c in Sources */ = {isa = PBXBuildFile; fileRef = 6CBA042C23197A1C0077627E /* eris.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -136,8 +136,6 @@
 		6C112A041F43761F0094948D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = mac/Main.storyboard; sourceTree = "<group>"; };
 		6C112A051F43761F0094948D /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = mac/ViewController.h; sourceTree = "<group>"; };
 		6C112A061F43761F0094948D /* ViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ViewController.mm; path = mac/ViewController.mm; sourceTree = "<group>"; };
-		6C112A131F43770C0094948D /* eris.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = eris.c; sourceTree = "<group>"; };
-		6C112A141F43770C0094948D /* eris.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = eris.h; sourceTree = "<group>"; };
 		6C112A161F4377260094948D /* lapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lapi.c; sourceTree = "<group>"; };
 		6C112A171F4377260094948D /* lapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lapi.h; sourceTree = "<group>"; };
 		6C112A181F4377260094948D /* lauxlib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lauxlib.c; sourceTree = "<group>"; };
@@ -241,6 +239,8 @@
 		6CA2D2CE1F44D09300471456 /* ScriptProxy_House.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ScriptProxy_House.hpp; sourceTree = "<group>"; };
 		6CA2D2D11F44D0A000471456 /* ScriptProxy_Person.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScriptProxy_Person.cpp; sourceTree = "<group>"; };
 		6CA2D2D21F44D0A000471456 /* ScriptProxy_Person.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ScriptProxy_Person.hpp; sourceTree = "<group>"; };
+		6CBA042B23197A1C0077627E /* eris.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = eris.h; sourceTree = "<group>"; };
+		6CBA042C23197A1C0077627E /* eris.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = eris.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -339,7 +339,7 @@
 		6C112A0D1F43765A0094948D /* vendors */ = {
 			isa = PBXGroup;
 			children = (
-				6C112A121F4376B20094948D /* eris */,
+				6CBA042A23197A1C0077627E /* eris */,
 				6C112A111F4376A90094948D /* luaBridge */,
 				6C112A0E1F4376710094948D /* lua */,
 			);
@@ -423,15 +423,6 @@
 			path = luaBridge;
 			sourceTree = "<group>";
 		};
-		6C112A121F4376B20094948D /* eris */ = {
-			isa = PBXGroup;
-			children = (
-				6C112A131F43770C0094948D /* eris.c */,
-				6C112A141F43770C0094948D /* eris.h */,
-			);
-			path = eris;
-			sourceTree = "<group>";
-		};
 		6C112A941F4377790094948D /* detail */ = {
 			isa = PBXGroup;
 			children = (
@@ -511,6 +502,15 @@
 				6CA2D2D21F44D0A000471456 /* ScriptProxy_Person.hpp */,
 			);
 			path = ScriptProxies;
+			sourceTree = "<group>";
+		};
+		6CBA042A23197A1C0077627E /* eris */ = {
+			isa = PBXGroup;
+			children = (
+				6CBA042B23197A1C0077627E /* eris.h */,
+				6CBA042C23197A1C0077627E /* eris.c */,
+			);
+			path = eris;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -641,7 +641,6 @@
 				6C112ABA1F437A840094948D /* Log.cpp in Sources */,
 				6C112AB21F4378CF0094948D /* ios_fileManager.mm in Sources */,
 				6C1129E31F4375140094948D /* main.m in Sources */,
-				6C112A151F43770C0094948D /* eris.c in Sources */,
 				6C112A671F4377260094948D /* lparser.c in Sources */,
 				6C112A681F4377260094948D /* lstate.c in Sources */,
 				6C112A6B1F4377260094948D /* ltable.c in Sources */,
@@ -659,6 +658,7 @@
 				6C112A621F4377260094948D /* lmem.c in Sources */,
 				6C112A6A1F4377260094948D /* lstrlib.c in Sources */,
 				6C112A541F4377260094948D /* lbitlib.c in Sources */,
+				6CBA042D23197A1D0077627E /* eris.c in Sources */,
 				6CA2D2D31F44D0A000471456 /* ScriptProxy_Person.cpp in Sources */,
 				6C112AC31F437EC30094948D /* UsageSample.cpp in Sources */,
 				6C112A531F4377260094948D /* lbaselib.c in Sources */,
@@ -697,7 +697,6 @@
 				6C112ABB1F437A840094948D /* Log.cpp in Sources */,
 				6C112A781F43774F0094948D /* lcorolib.c in Sources */,
 				6C112A0A1F43761F0094948D /* main.m in Sources */,
-				6C112A721F4377320094948D /* eris.c in Sources */,
 				6C112A891F43774F0094948D /* lparser.c in Sources */,
 				6C112A8A1F43774F0094948D /* lstate.c in Sources */,
 				6C112A8D1F43774F0094948D /* ltable.c in Sources */,
@@ -715,6 +714,7 @@
 				6C112A841F43774F0094948D /* lmem.c in Sources */,
 				6C112A8C1F43774F0094948D /* lstrlib.c in Sources */,
 				6C112A761F43774F0094948D /* lbitlib.c in Sources */,
+				6CBA042E23197C1B0077627E /* eris.c in Sources */,
 				6CA2D2D41F44D0A000471456 /* ScriptProxy_Person.cpp in Sources */,
 				6C112AC41F437EC30094948D /* UsageSample.cpp in Sources */,
 				6C112A751F43774F0094948D /* lbaselib.c in Sources */,

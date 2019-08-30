@@ -179,7 +179,11 @@ void LUAHull::LogText(const string &text, const string &context)
 void LUAHull::EnableCustomLoader()
 {
     LuaRef package = getGlobal(_l, "package");
-    LuaRef loaders = package["loaders"];
+    if (package.isTable()) {
+        int a = 0;
+        a++;
+    }
+    LuaRef loaders = package["searchers"];
     loaders[loaders.length()] = &MyLoader;
     return;
 }

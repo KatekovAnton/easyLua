@@ -38,6 +38,7 @@ end
 
 
 function Quest:continue(interruptionResult)
+    self.condition = nil
     coroutine.resume(self.co, interruptionResult)
 end
 
@@ -46,8 +47,8 @@ end
 function Quest:finish(state)
     print('Quest:finish')
     self.state = state
-    -- o.co = nil
-    -- o.condition = nil
+    --self.co = nil
+    self.condition = nil
 end
 
 
@@ -142,8 +143,16 @@ end
 
 
 function QuestManager:saveQuests(perms)
-    perms['runningQuests'] = self.runningQuests
-    perms['finishedQuests'] = self.finishedQuests
+    --perms['runningQuests'] = self.runningQuests
+    --perms['finishedQuests'] = self.finishedQuests
+    local fqd = {}
+    for quest, _ in pairs(self.finishedQuests) do
+        local q = {}
+        print(tostring(quest.co))
+        q["q"] = quest.co
+        fqd[q] = true
+    end
+    perms['finishedQuests'] = fqd
 end
 
 function QuestManager:loadQuests(perms)
