@@ -174,20 +174,15 @@ void UsageSample::Test(ByteBuffer *destination)
         ULog("Error in saveGlobalData: %s", e.what());
     }
     
-    try
-    {
-        LuaRef prepareSaveGlobalData = getGlobal(context.LuaState(), "prepareSaveGlobalData");
-        if (prepareSaveGlobalData.isFunction()) {
-            prepareSaveGlobalData();
-        }
+    try {
+        getGlobal(context.LuaState(), "prepareSaveGlobalData")();
     }
-    catch (LuaException const& e)
-    {
+    catch (LuaException const& e) {
         ULog("Error in prepareSaveGlobalData: %s", e.what());
     }
-    
+    getGlobal(context.LuaState(), "prepareSaveGlobalData")();
     lua_getglobal(context.LuaState(), "globalData");
-    lua_getglobal(context.LuaState(), "permsE");
+    lua_getglobal(context.LuaState(), "perms");
     context.Save(destination);
     
     ULog("Usage sample: Test() done ------\n");
@@ -234,17 +229,11 @@ void UsageSample::TestSaved(ByteBuffer *source)
     }
     
     
-    lua_getglobal(context.LuaState(), "permsE");
+    lua_getglobal(context.LuaState(), "perms");
     context.Load(source);
     LuaRef persRef = luabridge::LuaRef::fromStack(context.LuaState(), -1);
-//    if (persRef.isTable()) {
-//        LuaRef v3 = persRef["value3"];
-//
-//        if (v3.isString()) {
-//            std::string s = v3.cast<std::string>();
-//            ULog("%s", s.c_str());
-//        }
-//    }
+
+    
     LuaRef loadGlobalData = getGlobal(context.LuaState(), "loadGlobalData");
     loadGlobalData(persRef);
     ULog("Usage sample: TestSaved() done ------");

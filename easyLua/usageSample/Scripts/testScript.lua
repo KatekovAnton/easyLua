@@ -7,15 +7,15 @@ require('Quests/questExtensions')
 
 
 
-permsE = {}
+perms = {}
 globalData = {}
 
 function prepareSaveGlobalData()
-    permsE['_ENV'] = '_ENV'
+    perms['_ENV'] = '_ENV'
 end
 
 function prepareLoadGlobalData()
-    permsE['_ENV'] = _ENV
+    perms['_ENV'] = _ENV
 end
 
 
@@ -24,6 +24,7 @@ function saveGlobalData()
     globalData['value1'] = 'text1'
     globalData['value2'] = 'text2'
     globalData['value3'] = 'Well, lets test saving a string variable.'
+    
     gloabalQuestManager:saveQuests(globalData)
 
     print("saved data:", dump(globalData))
@@ -31,12 +32,12 @@ end
 
 
 
-function loadGlobalData(perms)
-    print("loaded data:", dump(perms))
+function loadGlobalData(permsE)
+    print("loaded data:", dump(permsE))
 
-    globalData['value1'] = perms['value1']
-    globalData['value2'] = perms['value2']
-    globalData['value3'] = perms['value3']
+    globalData['value1'] = permsE['value1']
+    globalData['value2'] = permsE['value2']
+    globalData['value3'] = permsE['value3']
 end
 
 
