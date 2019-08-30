@@ -174,11 +174,20 @@ void UsageSample::Test(ByteBuffer *destination)
         ULog("Error in saveGlobalData: %s", e.what());
     }
     
-    lua_getglobal(context.LuaState(), "perms");
+    try
+    {
+        LuaRef prepareSaveGlobalData = getGlobal(context.LuaState(), "prepareSaveGlobalData");
+        if (prepareSaveGlobalData.isFunction()) {
+            prepareSaveGlobalData();
+        }
+    }
+    catch (LuaException const& e)
+    {
+        ULog("Error in prepareSaveGlobalData: %s", e.what());
+    }
+    
     lua_getglobal(context.LuaState(), "globalData");
-    
-//    lua_getglobal(context.LuaState(), -2);
-    
+    lua_getglobal(context.LuaState(), "permsE");
     context.Save(destination);
     
     ULog("Usage sample: Test() done ------\n");
@@ -198,6 +207,9 @@ void UsageSample::TestSaved(ByteBuffer *source)
     ScriptProxy_House::BindToContext(&context);
     ScriptProxy_Person::BindToContext(&context);
     
+    
+    
+    
     // load script text
     {
         string scriptText = "";
@@ -208,7 +220,21 @@ void UsageSample::TestSaved(ByteBuffer *source)
     }
     
     
-    lua_getglobal(context.LuaState(), "perms");
+    
+    try
+    {
+        LuaRef prepareLoadGlobalData = getGlobal(context.LuaState(), "prepareLoadGlobalData");
+        if (prepareLoadGlobalData.isFunction()) {
+            prepareLoadGlobalData();
+        }
+    }
+    catch (LuaException const& e)
+    {
+        ULog("Error in prepareLoadGlobalData: %s", e.what());
+    }
+    
+    
+    lua_getglobal(context.LuaState(), "permsE");
     context.Load(source);
     LuaRef persRef = luabridge::LuaRef::fromStack(context.LuaState(), -1);
 //    if (persRef.isTable()) {

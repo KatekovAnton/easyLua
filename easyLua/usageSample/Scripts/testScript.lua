@@ -7,15 +7,16 @@ require('Quests/questExtensions')
 
 
 
-perms =
-{
+permsE = {}
+globalData = {}
 
-}
+function prepareSaveGlobalData()
+    permsE['_ENV'] = '_ENV'
+end
 
-globalData =
-{
-
-}
+function prepareLoadGlobalData()
+    permsE['_ENV'] = _ENV
+end
 
 
 
