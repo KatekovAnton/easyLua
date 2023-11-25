@@ -9,5 +9,8 @@ int main()
     ByteBuffer buffer;
     s.Test(&buffer);
 
+
+    UsageSample s1;
+    s.TestSaved(&buffer);
     return 0;
 }
