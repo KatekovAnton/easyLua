@@ -22,16 +22,14 @@ using namespace luabridge;
 
 
 
-UsageSample::UsageSample(bool empty)
+UsageSample::UsageSample()
 {
     _rootFolder = "Scripts/";
-    
-    if (!empty) {
-        vector<shared_ptr<Person>> persons;
-        persons.push_back(shared_ptr<Person>(new Person("Fredd", GPoint2D(0.3, 0.7))));
-        persons.push_back(shared_ptr<Person>(new Person("Sarah", GPoint2D(0.9, 1.5))));
-        _house = new House(persons, GSize2D(2.0, 2.0));
-    }
+
+    vector<shared_ptr<Person>> persons;
+    persons.push_back(shared_ptr<Person>(new Person("Fredd", GPoint2D(0.3, 0.7))));
+    persons.push_back(shared_ptr<Person>(new Person("Sarah", GPoint2D(0.9, 1.5))));
+    _house = new House(persons, GSize2D(2.0, 2.0));
 }
 
 UsageSample::~UsageSample()

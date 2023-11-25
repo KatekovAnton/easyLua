@@ -28,6 +28,12 @@ file(GLOB_RECURSE PROJECT_LIB_SOURCES
     ${PROJECT_SOURCE_DIR}/easyLuaLib/*.c
 )
 
+file(GLOB_RECURSE PROJECT_LIB_SOURCES_CPP
+    ${PROJECT_SOURCE_DIR}/easyLuaLib/*.cpp
+)
+
+list(APPEND PROJECT_LIB_SOURCES ${PROJECT_LIB_SOURCES_CPP})
+
 file(GLOB_RECURSE PROJECT_SAMPLE_SOURCES 
     ${PROJECT_SOURCE_DIR}/easyLuaSample/*.cpp
 )
@@ -66,7 +72,6 @@ endif()
 #target_compile_definitions(easyLua PRIVATE LUA_BUILD_AS_DLL)
 #target_compile_definitions(easyLua PRIVATE LUA_CORE)
 
-message("Sources " ${PROJECT_SAMPLE_SOURCES})
 
 add_executable(${PROJECT_NAME} ${PROJECT_SAMPLE_SOURCES})
 target_include_directories(${PROJECT_NAME} PRIVATE ${PROJECT_SOURCE_DIR}/easyLuaSample)
@@ -88,5 +93,5 @@ macro(copy_files TARGET_NAME SRC_DIR DST_DIR)
     add_custom_target(${TARGET_NAME} ALL DEPENDS ${OUT_RESOURCE_FILES})
 endmacro()
 
-copy_files(${PROJECT_NAME}_copy_data ${CMAKE_CURRENT_SOURCE_DIR}/easyLuaSample/Scripts ${CMAKE_BINARY_DIR}/Resources)
+copy_files(${PROJECT_NAME}_copy_data ${CMAKE_CURRENT_SOURCE_DIR}/easyLuaSample/Resources ${CMAKE_BINARY_DIR}/Resources)
 add_dependencies(${PROJECT_NAME} ${PROJECT_NAME}_copy_data)

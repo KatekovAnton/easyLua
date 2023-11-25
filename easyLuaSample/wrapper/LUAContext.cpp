@@ -9,18 +9,11 @@
 #include "FileManger.h"
 #include "Log.hpp"
 #include <vector>
-#if !defined (WIN32)
-extern "C" {
-#endif
-#include "eris.h"
-#if !defined (WIN32)
-}
-#endif
 #include "ByteBuffer.h"
 #include "Geometry.h"
-
-
-
+extern "C" {
+#include "eris.h"
+}
 
 class LUAPersister {
 public:

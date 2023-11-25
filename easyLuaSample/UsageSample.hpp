@@ -24,7 +24,7 @@ class UsageSample : public LUAScriptDataSource {
     
 public:
     
-    UsageSample(bool empty);
+    UsageSample();
     ~UsageSample();
     
     void Test(ByteBuffer *destination);
